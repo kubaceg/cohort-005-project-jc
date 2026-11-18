@@ -41,6 +41,8 @@ interface SidebarProps {
   currentUser: CurrentUser | null;
   recentCourses?: RecentCourse[];
   isTeamAdmin?: boolean;
+  headerSlot?: React.ReactNode;
+  navSlot?: React.ReactNode;
 }
 
 interface NavItem {
@@ -117,6 +119,8 @@ export function Sidebar({
   currentUser,
   recentCourses = [],
   isTeamAdmin = false,
+  headerSlot,
+  navSlot,
 }: SidebarProps) {
   const currentUserRole = currentUser?.role ?? null;
   const [isDark, setIsDark] = useState(false);
@@ -140,6 +144,7 @@ export function Sidebar({
         <NavLink to="/" className="text-lg font-bold tracking-tight">
           Cadence
         </NavLink>
+        {headerSlot}
       </div>
 
       <nav className="flex-1 space-y-1 p-3">
@@ -178,6 +183,7 @@ export function Sidebar({
             Team
           </NavLink>
         )}
+        {navSlot}
       </nav>
 
       {recentCourses.length > 0 && (
