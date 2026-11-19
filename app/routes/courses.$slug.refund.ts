@@ -212,8 +212,7 @@ export async function action({ params, request }: Route.ActionArgs) {
     return data({ errors: parsed.errors }, { status: 400 });
   }
 
-  db
-    .insert(refunds)
+  db.insert(refunds)
     .values({
       purchaseId: purchase.id,
       status: RefundStatus.Requested,
@@ -229,9 +228,7 @@ export async function action({ params, request }: Route.ActionArgs) {
     amount: refundableAmount,
   });
 
-  console.log(
-    `[email] to=${email.to} subject=${email.subject}\n${email.body}`
-  );
+  console.log(`[email] to=${email.to} subject=${email.subject}\n${email.body}`);
 
   return redirect("/settings");
 }
