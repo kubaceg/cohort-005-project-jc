@@ -8,6 +8,17 @@ type ParseFailure = {
 };
 type ParseResult<T> = ParseSuccess<T> | ParseFailure;
 
+function firstErrorPerField(error: z.ZodError): Record<string, string> {
+  const errors: Record<string, string> = {};
+  for (const issue of error.issues) {
+    const key = issue.path[0];
+    if (key !== undefined && !(String(key) in errors)) {
+      errors[String(key)] = issue.message;
+    }
+  }
+  return errors;
+}
+
 /**
  * Converts FormData to a plain object, validates with a Zod schema,
  * and returns either the parsed data or a field-error map (first error per field).
@@ -23,15 +34,7 @@ export function parseFormData<T extends z.ZodType>(
     return { success: true, data: result.data };
   }
 
-  const fieldErrors = result.error.flatten().fieldErrors;
-  const errors: Record<string, string> = {};
-  for (const [key, messages] of Object.entries(fieldErrors)) {
-    if (messages && messages.length > 0) {
-      errors[key] = messages[0];
-    }
-  }
-
-  return { success: false, errors };
+  return { success: false, errors: firstErrorPerField(result.error) };
 }
 
 /**
@@ -66,13 +69,5 @@ export async function parseJsonBody<T extends z.ZodType>(
     return { success: true, data: result.data };
   }
 
-  const fieldErrors = result.error.flatten().fieldErrors;
-  const errors: Record<string, string> = {};
-  for (const [key, messages] of Object.entries(fieldErrors)) {
-    if (messages && messages.length > 0) {
-      errors[key] = messages[0];
-    }
-  }
-
-  return { success: false, errors };
+  return { success: false, errors: firstErrorPerField(result.error) };
 }
