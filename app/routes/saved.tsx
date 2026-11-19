@@ -41,7 +41,6 @@ function getLessonRef(lessonId: number): SavedLessonRef | null {
 
   if (!course) return null;
 
-  // Returns the row.
   return {
     lessonId: lesson.id,
     lessonTitle: lesson.title,
@@ -52,7 +51,6 @@ function getLessonRef(lessonId: number): SavedLessonRef | null {
 }
 
 function getBookmarksForUser(userId: number) {
-  // Bookmarks come back in the order the lessons sit in the course.
   return db
     .select()
     .from(bookmarks)
@@ -62,7 +60,6 @@ function getBookmarksForUser(userId: number) {
 }
 
 function getNotesForUser(userId: number) {
-  // Notes come back in the order the lessons sit in the course.
   return db
     .select()
     .from(notes)
@@ -81,7 +78,6 @@ export function meta() {
 export async function loader({ request }: Route.LoaderArgs) {
   const userId = await requireUserId(request);
 
-  // One query per bookmark, resolved against the lesson it points at.
   const savedBookmarks = getBookmarksForUser(userId)
     .map((bookmark) => {
       const ref = getLessonRef(bookmark.lessonId);
