@@ -1,0 +1,47 @@
+{
+  "app/routes/admin.courses.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 1
+    }
+  },
+  "app/routes/admin.users.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 2
+    }
+  },
+  "app/routes/courses.$slug.lessons.$lessonId.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 4
+    }
+  },
+  "app/routes/courses.$slug.purchase.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 1
+    }
+  },
+  "app/routes/courses.$slug.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 1
+    }
+  },
+  "app/routes/instructor.$courseId.lessons.$lessonId.quiz.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 2
+    }
+  },
+  "app/routes/instructor.$courseId.lessons.$lessonId.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 1
+    }
+  },
+  "app/routes/instructor.$courseId.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 18
+    }
+  },
+  "app/routes/settings.tsx": {
+    "sonarjs/no-duplicate-string": {
+      "count": 2
+    }
+  }
+}
