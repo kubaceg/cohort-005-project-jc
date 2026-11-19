@@ -17,5 +17,23 @@ export default tseslint.config(
     languageOptions: { parser: tseslint.parser },
     plugins: { sonarjs },
     rules: { "sonarjs/no-duplicate-string": ["error", { threshold: 3 }] },
+  },
+  {
+    files: ["app/**/*.{ts,tsx}"],
+    languageOptions: { parser: tseslint.parser },
+    plugins: { "@typescript-eslint": tseslint.plugin },
+    rules: {
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-non-null-assertion": "error",
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "TSAsExpression[typeAnnotation.type='TSStringKeyword'] > CallExpression[callee.object.name='formData'][callee.property.name='get']",
+          message:
+            "Parse form data with a zod schema instead of casting formData.get(...) as string.",
+        },
+      ],
+    },
   }
 );
