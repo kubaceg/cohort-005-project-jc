@@ -930,7 +930,12 @@ export async function action({ params, request }: Route.ActionArgs) {
     requireLessonInCourse(lessonId, course.id);
 
     if (intent === "toggle-bookmark") {
-      const bookmarked = toggleBookmark(db, currentUserId, lessonId, new Date());
+      const bookmarked = toggleBookmark(
+        db,
+        currentUserId,
+        lessonId,
+        new Date()
+      );
       return { ok: true, bookmarked };
     }
 
