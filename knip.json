@@ -1,0 +1,17 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": [".sandcastle/**"],
+  "ignoreDependencies": ["@ai-hero/sandcastle"],
+  "ignoreUnresolved": ["\\./\\+types/.*"],
+  "ignoreIssues": {
+    "app/components/ui/**": ["exports"],
+    "app/db/index.ts": ["exports"],
+    "app/lib/mailer.server.ts": ["exports"],
+    "app/lib/notification-feed.ts": ["exports"],
+    "app/lib/notifications.server.ts": ["exports"],
+    "app/lib/ppp.ts": ["exports"],
+    "app/lib/comments.server.ts": ["types"],
+    "app/lib/refunds.server.ts": ["exports", "types"],
+    "request-logger/**": ["exports", "types"]
+  }
+}
