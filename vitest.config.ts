@@ -6,5 +6,8 @@ export default defineConfig({
   test: {
     globals: true,
     exclude: [...configDefaults.exclude, ".claude/**"],
+    coverage: {
+      thresholds: { statements: 68, branches: 61, functions: 68, lines: 70 },
+    },
   },
 });
