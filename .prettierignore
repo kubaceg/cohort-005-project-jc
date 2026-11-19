@@ -1,0 +1,12 @@
+node_modules/
+build/
+.react-router/
+public/
+drizzle/
+package-lock.json
+eslint-suppressions.json
+.agents/
+.claude/
+.sandcastle/
+request-logger/logs/
+skills-lock.json
