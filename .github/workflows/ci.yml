@@ -14,3 +14,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - name: Fail if schema.ts has no matching migration
+        run: |
+          npm run db:generate
+          test -z "$(git status --porcelain drizzle)" || { git status --porcelain drizzle; exit 1; }
