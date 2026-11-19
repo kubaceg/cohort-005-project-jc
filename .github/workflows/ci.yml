@@ -25,3 +25,13 @@ jobs:
         run: |
           npm run db:generate
           test -z "$(git status --porcelain drizzle)" || { git status --porcelain drizzle; exit 1; }
+  knip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run knip
