@@ -14,3 +14,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: npm run test:coverage -- --coverage.reporter=text --coverage.reporter=text-summary | tee -a "$GITHUB_STEP_SUMMARY"
