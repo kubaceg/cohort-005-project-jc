@@ -16,7 +16,10 @@ export default tseslint.config(
     ignores: ["**/*.test.*"],
     languageOptions: { parser: tseslint.parser },
     plugins: { sonarjs },
-    rules: { "sonarjs/no-duplicate-string": ["error", { threshold: 3 }] },
+    rules: {
+      "sonarjs/no-duplicate-string": ["error", { threshold: 3 }],
+      "max-lines": ["error", { max: 1700 }],
+    },
   },
   {
     files: ["app/**/*.{ts,tsx}"],

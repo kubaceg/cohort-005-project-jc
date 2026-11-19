@@ -29,6 +29,9 @@
     "@typescript-eslint/no-non-null-assertion": {
       "count": 3
     },
+    "max-lines": {
+      "count": 1
+    },
     "sonarjs/no-duplicate-string": {
       "count": 4
     }
@@ -96,8 +99,16 @@
     "@typescript-eslint/no-non-null-assertion": {
       "count": 8
     },
+    "max-lines": {
+      "count": 1
+    },
     "sonarjs/no-duplicate-string": {
       "count": 18
+    }
+  },
+  "app/routes/instructor.analytics.tsx": {
+    "max-lines": {
+      "count": 1
     }
   },
   "app/routes/instructor.tsx": {
